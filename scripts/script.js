@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const complementElement = document.getElementById('complement');
 
                 if (response === 'yes') {
-                    answerElement.textContent = 'Yes';
+                    answerElement.textContent = 'YES';
                     complementElement.textContent = 'Kingsley Coman is currently injured!';
                 } else if (response === 'no') {
-                    answerElement.textContent = 'No';
+                    answerElement.textContent = 'NO';
                     complementElement.textContent = 'Kingsley Coman is not injured currently!';
                 } else {
                     answerElement.textContent = 'Unknown';
