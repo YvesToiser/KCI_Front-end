@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function fetchData() {
         fetch('https://kci-api-dxek.onrender.com/KC')
-            .then(response => response.text()) // for raw text. need to be adjusted for json or other format
+            .then(response => response.json()) // for raw text. need to be adjusted for json or other format
             .then(data => {
                 const isInjured = data.isInjured;
                 const lastInjuryDate = data.lastInjuryDate;
@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 if (isInjured) {
                     answerElement.textContent = 'YES';
-                    complementElement.textContent = 'Kingsley Coman is currently injured!<br> ('+injuryType+')';
+                    complementElement.innerHTML  = 'Kingsley Coman is currently injured!<br> ('+injuryType+')';
                 } else if (!isInjured) {
                     answerElement.textContent = 'NO';
-                    complementElement.textContent = 'Kingsley Coman is not injured currently!<br>He has not been injured since ' + lastInjuryDate + '!';
+                    complementElement.innerHTML  = 'Kingsley Coman is not injured currently!<br>He has not been injured since ' + lastInjuryDate + '!';
                 }
             })
             .catch(error => {
