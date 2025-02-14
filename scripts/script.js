@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     function fetchData() {
+        const answerElement = document.getElementById('answer');
+        const complementElement = document.getElementById('complement');
         fetch('https://kci-api-dxek.onrender.com/KC')
-            .then(response => response.json()) // for raw text. need to be adjusted for json or other format
+            .then(response => response.json())
             .then(data => {
                 const isInjured = data.isInjured;
                 const lastInjuryDate = data.lastInjuryDate;
                 const injuryType = data.InjuryType;
-
-                const answerElement = document.getElementById('answer');
-                const complementElement = document.getElementById('complement');
 
                 if (isInjured) {
                     answerElement.textContent = 'YES';
@@ -21,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error('Erreur lors de la requête à l\'API:', error);
-                const answerElement = document.getElementById('answer');
-                const complementElement = document.getElementById('complement');
+
                 answerElement.textContent = 'Error';
                 complementElement.textContent = 'An error occurred while retrieving the data.';
             });
