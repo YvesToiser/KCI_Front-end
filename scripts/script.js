@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    let retryCount = 0;
+
     function fetchData() {
         const answerElement = document.getElementById('answer');
         const complementElement = document.getElementById('complement');
@@ -23,6 +25,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 answerElement.textContent = 'Error';
                 complementElement.textContent = 'An error occurred while retrieving the data.';
+                retryCount ++;
+                const maxRetries = 10;
+                if (retryCount <= maxRetries) {
+                    let delay;
+                    if (retryCount <= 1) {
+                        delay = 10000; // 10 seconds
+                    } else if (retryCount <= 2) {
+                        delay = 20000; // 20 seconds
+                    } else if (retryCount <= 3) {
+                        delay = 30000; // 30 seconds
+                    } else if (retryCount <= 4) {
+                        delay = 45000; // 45 seconds
+                    } else {
+                        delay = 60000; // 1 minute
+                    }
+                    console.log(`Retrying in ${delay / 1000} seconds...`);
+                    setTimeout(fetchData, delay);
+                } else {
+                    console.log('Max tries attempts reached. No more tries.');
+                }
             });
     }
 
