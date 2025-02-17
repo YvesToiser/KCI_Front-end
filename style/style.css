@@ -108,15 +108,17 @@ body::after {
 
 @media (max-width: 480px) {
     #question {
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 
     #answer {
-        font-size: 2.5em;
+        font-size: 5em;
+        margin-top: -200px;
     }
 
     #complement {
-        font-size: 1em;
+        font-size: 1.4em;
+        margin-top: -50px;
     }
 
     h1 {
@@ -130,15 +132,8 @@ body::after {
     /* Ajustement pour les mobiles */
     body::before, body::after {
         width: 100%;
+        height: 50%; /* Couvre la moitié inférieure de l'écran */
+        top: 50%; /* Positionne à partir du milieu de l'écran */
     }
 
-    body::before {
-        background-position: center right;
-        transform: translateX(-100%); /* Déplace l'image complètement vers la gauche */
-    }
-
-    body::after {
-        background-position: center left;
-        transform: translateX(100%); /* Déplace l'image complètement vers la droite */
-    }
 }
